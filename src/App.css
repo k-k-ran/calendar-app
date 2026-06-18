@@ -533,15 +533,14 @@
   background: #1e293b;
 }
 
-.fc .fc-fullDayToggle-button.fc-button.fc-button-primary {
-  margin-left: 12px;
-  background-color: #0ea5e9 !important;
-  border-color: #0ea5e9 !important;
+/* Smooth scrolling for time grid */
+.fc .fc-scroller {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-.fc .fc-fullDayToggle-button.fc-button.fc-button-primary:hover {
-  background-color: #0284c7 !important;
-  border-color: #0284c7 !important;
+.fc .fc-timegrid-body {
+  -webkit-overflow-scrolling: touch;
 }
 
 /* FullCalendar overrides — dark mode */

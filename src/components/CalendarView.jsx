@@ -30,22 +30,24 @@ function highlightAllDayColumns(calRef, events) {
 }
 
 export default function CalendarView({ events, onEventClick, onEventDrop, onEventResize, onSelect }) {
-  const [fullDay, setFullDay] = useState(false)
   const calRef = useRef(null)
 
   useEffect(() => {
     const el = calRef.current?.elRef?.current
     if (!el) return
-    let touchStartX = 0
-    let touchStartY = 0
+    let startX = 0, startY = 0, startTime = 0
     const onTouchStart = (e) => {
-      touchStartX = e.touches[0].clientX
-      touchStartY = e.touches[0].clientY
+      startX = e.touches[0].clientX
+      startY = e.touches[0].clientY
+      startTime = Date.now()
     }
     const onTouchEnd = (e) => {
-      const dx = e.changedTouches[0].clientX - touchStartX
-      const dy = e.changedTouches[0].clientY - touchStartY
-      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      const dx = e.changedTouches[0].clientX - startX
+      const dy = e.changedTouches[0].clientY - startY
+      const dt = Date.now() - startTime
+      const vx = Math.abs(dx) / dt
+      const isHorizontal = Math.abs(dx) > Math.abs(dy) * 1.2
+      if (isHorizontal && (Math.abs(dx) > 50 || vx > 0.3)) {
         const api = calRef.current?.getApi()
         if (api) {
           if (dx > 0) api.incrementDate({ days: -1 })
@@ -82,16 +84,10 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
         },
       }}
       firstDay={1}
-      customButtons={{
-        fullDayToggle: {
-          text: fullDay ? '9–9' : '24h',
-          click: () => setFullDay(f => !f),
-        },
-      }}
       headerToolbar={{
         left: 'today',
         center: 'title',
-        right: 'dayGridMonth,timeGrid3Day,fullDayToggle',
+        right: 'dayGridMonth,timeGrid3Day',
       }}
       events={events}
       datesSet={handleDatesSet}
@@ -128,10 +124,11 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       height="100%"
       eventDisplay="block"
       eventMinHeight={22}
-      slotMinTime={fullDay ? '00:00:00' : '09:00:00'}
-      slotMaxTime={fullDay ? '24:00:00' : '21:00:00'}
+      slotMinTime="00:00:00"
+      slotMaxTime="24:00:00"
       slotDuration="01:00:00"
-      expandRows={true}
+      scrollTime="08:00:00"
+      expandRows={false}
       allDayText=""
     />
   )
