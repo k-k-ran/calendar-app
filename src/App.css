@@ -986,10 +986,8 @@
 @media (max-width: 768px) {
   .mobile-tabs {
     display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    order: 2;
+    flex-shrink: 0;
     background: #1e293b;
     border-top: 1px solid rgba(255,255,255,0.15);
     z-index: 50;
@@ -1023,8 +1021,8 @@
     width: 100% !important;
     min-width: 0;
     flex: 1;
-    height: 0;
-    padding-bottom: calc(49px + env(safe-area-inset-bottom));
+    min-height: 0;
+    order: 1;
   }
 
   .sidebar.mobile-visible {
@@ -1035,8 +1033,8 @@
     display: none;
     padding: 8px;
     flex: 1;
-    height: 0;
-    padding-bottom: calc(49px + env(safe-area-inset-bottom));
+    min-height: 0;
+    order: 1;
   }
 
   .main.mobile-visible {
