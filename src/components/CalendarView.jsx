@@ -122,6 +122,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       editable={true}
       eventDurationEditable={true}
       height="100%"
+      stickyHeaderDates={true}
       eventDisplay="block"
       eventMinHeight={22}
       slotMinTime="00:00:00"

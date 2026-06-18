@@ -555,11 +555,20 @@
 .fc {
   height: 100%;
   font-family: inherit;
+  overflow-y: auto;
   --fc-border-color: #334155;
   --fc-page-bg-color: #1e293b;
   --fc-neutral-bg-color: #1e293b;
   --fc-today-bg-color: rgba(99, 102, 241, 0.1);
   --fc-list-event-hover-bg-color: #334155;
+}
+
+.fc .fc-header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #1e293b;
+  padding: 4px 0;
 }
 
 .fc-toolbar-title {
