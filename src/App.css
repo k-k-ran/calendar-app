@@ -555,7 +555,7 @@
 .fc {
   height: 100%;
   font-family: inherit;
-  overflow-y: auto;
+  overflow: hidden;
   --fc-border-color: #334155;
   --fc-page-bg-color: #1e293b;
   --fc-neutral-bg-color: #1e293b;
