@@ -132,6 +132,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       slotMaxTime={fullDay ? '24:00:00' : '21:00:00'}
       slotDuration="01:00:00"
       expandRows={true}
+      allDayText=""
     />
   )
 }
