@@ -29,7 +29,7 @@ function highlightAllDayColumns(calRef, events) {
   }
 }
 
-export default function CalendarView({ events, onEventClick, onEventDrop, onEventResize, onSelect }) {
+export default function CalendarView({ events, onEventClick, onEventDrop, onEventResize, onSelect, onDateClick }) {
   const calRef = useRef(null)
 
   useEffect(() => {
@@ -116,6 +116,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       eventDrop={onEventDrop}
       eventResize={onEventResize}
       select={onSelect}
+      dateClick={onDateClick}
       selectable={true}
       unselectAuto={true}
       buttonText={{ today: 'Today', month: 'Month' }}

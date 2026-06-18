@@ -1,7 +1,7 @@
 /* Layout */
 .app {
   display: flex;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -1022,7 +1022,9 @@
     display: none;
     width: 100% !important;
     min-width: 0;
-    height: calc(100vh - 49px - env(safe-area-inset-bottom));
+    flex: 1;
+    height: 0;
+    padding-bottom: calc(49px + env(safe-area-inset-bottom));
   }
 
   .sidebar.mobile-visible {
@@ -1032,7 +1034,9 @@
   .main {
     display: none;
     padding: 8px;
-    height: calc(100vh - 49px - env(safe-area-inset-bottom));
+    flex: 1;
+    height: 0;
+    padding-bottom: calc(49px + env(safe-area-inset-bottom));
   }
 
   .main.mobile-visible {
