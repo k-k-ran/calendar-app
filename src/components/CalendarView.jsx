@@ -121,7 +121,8 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       buttonText={{ today: 'Today', month: 'Month' }}
       editable={true}
       eventDurationEditable={true}
-      height="100%"
+      height="auto"
+      contentHeight="auto"
       eventDisplay="block"
       eventMinHeight={22}
       slotMinTime="00:00:00"

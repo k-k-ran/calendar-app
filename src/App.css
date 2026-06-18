@@ -526,7 +526,8 @@
 /* Main calendar area */
 .main {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   padding: 20px;
