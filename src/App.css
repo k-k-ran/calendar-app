@@ -587,11 +587,26 @@
 
 .fc .fc-timegrid-slot-label-cushion {
   color: #94a3b8 !important;
+  display: block;
+  padding: 0 4px 0 0 !important;
   transform: translateY(-50%);
+  text-align: right;
 }
 
 .fc .fc-timegrid-axis {
   border: none !important;
+}
+
+.fc .fc-scrollgrid {
+  border-left: none !important;
+}
+
+.fc .fc-scrollgrid td:first-child {
+  border-left: none !important;
+}
+
+.fc .fc-scrollgrid th:first-child {
+  border-left: none !important;
 }
 
 .fc-button-primary {

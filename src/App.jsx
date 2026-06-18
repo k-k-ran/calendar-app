@@ -267,13 +267,6 @@ export default function App() {
     setShowChoice(true)
   }
 
-  const handleDateClick = (info) => {
-    const date = info.dateStr.split('T')[0]
-    const startTime = info.dateStr.includes('T') ? info.dateStr.split('T')[1].substring(0, 5) : '10:00'
-    setClickedSlot({ date, startTime, endTime: null, allDay: info.allDay })
-    setShowChoice(true)
-  }
-
   const saveEventSchedule = async (info, scope) => {
     const startStr = info.event.startStr
     const endStr = info.event.endStr
@@ -508,7 +501,7 @@ export default function App() {
     .filter(e => selectedPeople.has(e.extendedProps?.person_id) &&
       e.extendedProps?.date >= today && e.extendedProps?.status === 'upcoming')
     .sort((a, b) => a.start.localeCompare(b.start))
-    .slice(0, 7)
+    .slice(0, 5)
 
   const searchLow = searchQuery.toLowerCase()
   const filteredUpcoming = upcomingEvents.filter(e =>
@@ -636,7 +629,6 @@ export default function App() {
           onEventDrop={handleEventDrop}
           onEventResize={handleEventResize}
           onSelect={handleSelect}
-          onDateClick={handleDateClick}
         />
       </main>
 
