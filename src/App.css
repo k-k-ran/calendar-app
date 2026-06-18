@@ -530,6 +530,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  background: #1e293b;
 }
 
 .fc .fc-fullDayToggle-button.fc-button.fc-button-primary {
@@ -543,15 +544,29 @@
   border-color: #0284c7 !important;
 }
 
-/* FullCalendar overrides */
+/* FullCalendar overrides — dark mode */
 .fc {
   height: 100%;
   font-family: inherit;
+  --fc-border-color: #334155;
+  --fc-page-bg-color: #1e293b;
+  --fc-neutral-bg-color: #1e293b;
+  --fc-today-bg-color: rgba(99, 102, 241, 0.1);
+  --fc-list-event-hover-bg-color: #334155;
 }
 
 .fc-toolbar-title {
   font-size: 20px !important;
   font-weight: 700 !important;
+  color: #f1f5f9 !important;
+}
+
+.fc-col-header-cell-cushion {
+  color: #cbd5e1 !important;
+}
+
+.fc .fc-timegrid-slot-label-cushion {
+  color: #94a3b8 !important;
 }
 
 .fc-button-primary {
@@ -571,7 +586,19 @@
 }
 
 .fc-day-sat, .fc-day-sun {
-  background: #f0f7ff !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.fc-daygrid-day-number {
+  color: #cbd5e1 !important;
+}
+
+.fc .fc-scrollgrid {
+  border-color: #334155 !important;
+}
+
+.fc .fc-timegrid-now-indicator-line {
+  border-color: #ef4444 !important;
 }
 
 .fc-event {
@@ -633,6 +660,7 @@
 }
 
 .fc .fc-daygrid-body {
+  min-height: 22px;
   max-height: 22px;
   overflow: hidden;
 }
