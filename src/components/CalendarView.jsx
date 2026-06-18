@@ -73,12 +73,12 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
     <FullCalendar
       ref={calRef}
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="timeGrid5Day"
+      initialView="timeGrid3Day"
       views={{
-        timeGrid5Day: {
+        timeGrid3Day: {
           type: 'timeGrid',
-          duration: { days: 5 },
-          buttonText: '5 Day',
+          duration: { days: 3 },
+          buttonText: '3 Day',
         },
       }}
       firstDay={1}
@@ -91,7 +91,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       headerToolbar={{
         left: 'today',
         center: 'title',
-        right: 'dayGridMonth,timeGrid5Day,fullDayToggle',
+        right: 'dayGridMonth,timeGrid3Day,fullDayToggle',
       }}
       events={events}
       datesSet={handleDatesSet}

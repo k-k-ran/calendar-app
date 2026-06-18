@@ -626,6 +626,11 @@
 }
 
 /* Shrink all-day section */
+.fc .fc-timegrid-axis-cushion {
+  font-size: 9px !important;
+  padding: 2px !important;
+}
+
 .fc .fc-daygrid-body {
   max-height: 28px;
   overflow: hidden;
