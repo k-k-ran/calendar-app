@@ -1022,11 +1022,12 @@
     z-index: 50;
     padding: 0;
     padding-bottom: env(safe-area-inset-bottom);
+    margin-bottom: calc(-0.5 * env(safe-area-inset-bottom));
   }
 
   .mobile-tab {
     flex: 1;
-    padding: 6px 8px;
+    padding: 10px 8px;
     border: none;
     background: transparent;
     font: inherit;
