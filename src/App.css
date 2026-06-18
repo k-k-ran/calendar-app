@@ -666,7 +666,7 @@
   width: 0 !important;
 }
 
-.fc .fc-daygrid-body {
+.fc .fc-timegrid .fc-daygrid-body {
   min-height: 22px;
   max-height: 22px;
   overflow: hidden;
@@ -677,12 +677,12 @@
   border: none !important;
 }
 
-.fc .fc-daygrid-day-events {
+.fc .fc-timegrid .fc-daygrid-day-events {
   margin: 0 !important;
   min-height: 0 !important;
 }
 
-.fc .fc-daygrid-day-bottom {
+.fc .fc-timegrid .fc-daygrid-day-bottom {
   display: none;
 }
 
