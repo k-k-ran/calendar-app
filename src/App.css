@@ -580,9 +580,15 @@
   color: #cbd5e1 !important;
 }
 
+/* Time-label (axis) column — no gridlines around it */
+.fc .fc-timegrid-axis,
+.fc .fc-timegrid-slot-label,
+.fc th.fc-timegrid-axis {
+  border: none !important;
+}
+
 .fc .fc-timegrid-slot-label {
   vertical-align: top !important;
-  border: none !important;
 }
 
 .fc .fc-timegrid-slot-label-cushion {
@@ -593,20 +599,18 @@
   text-align: right;
 }
 
-.fc .fc-timegrid-axis {
-  border: none !important;
-}
-
-.fc .fc-scrollgrid {
-  border-left: none !important;
-}
-
 .fc .fc-timegrid-slot-label-frame {
   overflow: visible;
 }
 
-.fc td.fc-timegrid-slot.fc-timegrid-slot-label {
-  border-right: none !important;
+.fc .fc-scrollgrid {
+  border-left: none !important;
+  border-top: none !important;
+}
+
+/* Day columns (day 1/2/3) keep their gridlines */
+.fc .fc-timegrid-col {
+  border-left: 1px solid var(--fc-border-color) !important;
 }
 
 .fc-button-primary {
