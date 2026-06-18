@@ -17,7 +17,7 @@ body {
 }
 
 #root {
-  height: calc(100vh - env(safe-area-inset-top));
+  height: 100%;
 }
 
 .auth-page {

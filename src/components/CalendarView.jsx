@@ -130,7 +130,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       slotMaxTime="24:00:00"
       slotDuration="01:00:00"
       scrollTime="08:00:00"
-      slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
+      slotLabelFormat={{ hour: 'numeric', hour12: false }}
       eventTimeFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
       expandRows={false}
       allDayText=""

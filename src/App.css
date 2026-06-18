@@ -582,10 +582,16 @@
 
 .fc .fc-timegrid-slot-label {
   vertical-align: top !important;
+  border: none !important;
 }
 
 .fc .fc-timegrid-slot-label-cushion {
   color: #94a3b8 !important;
+  transform: translateY(-50%);
+}
+
+.fc .fc-timegrid-axis {
+  border: none !important;
 }
 
 .fc-button-primary {
