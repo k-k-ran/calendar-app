@@ -158,6 +158,7 @@ export default function App() {
   const [lessonScopeAction, setLessonScopeAction] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [error, setError] = useState(null)
+  const [mobileTab, setMobileTab] = useState('calendar')
 
   const pendingRef = useRef(null)
   const hasLoadedRef = useRef(false)
@@ -518,13 +519,17 @@ export default function App() {
 
   return (
     <div className="app">
+      <nav className="mobile-tabs">
+        <button className={`mobile-tab ${mobileTab === 'calendar' ? 'active' : ''}`} onClick={() => setMobileTab('calendar')}>Calendar</button>
+        <button className={`mobile-tab ${mobileTab === 'list' ? 'active' : ''}`} onClick={() => setMobileTab('list')}>List</button>
+      </nav>
       {error && (
         <div className="error-toast" onClick={() => setError(null)} role="alert">
           <span>{error}</span>
           <span className="error-toast-x">×</span>
         </div>
       )}
-      <aside className="sidebar">
+      <aside className={`sidebar ${mobileTab === 'list' ? 'mobile-visible' : ''}`}>
         <div className="sidebar-header">
           <h1 className="app-title">Calendar</h1>
           <div style={{ display: 'flex', gap: 6 }}>
@@ -614,7 +619,7 @@ export default function App() {
         </div>
       </aside>
 
-      <main className="main">
+      <main className={`main ${mobileTab === 'calendar' ? 'mobile-visible' : ''}`}>
         <CalendarView
           events={visibleEvents}
           onEventClick={handleEventClick}
