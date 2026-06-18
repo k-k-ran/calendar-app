@@ -1,8 +1,33 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+
+function highlightAllDayColumns(calRef, events) {
+  const api = calRef.current?.getApi()
+  if (!api) return
+  const el = calRef.current?.elRef?.current
+  if (!el) return
+
+  el.querySelectorAll('.fc-day-allday-highlight').forEach(s => s.remove())
+
+  const allDayEvents = events.filter(e => e.allDay || e.extendedProps?.all_day)
+  for (const ev of allDayEvents) {
+    const dateStr = ev.extendedProps?.date || ev.start
+    if (!dateStr) continue
+    const date = typeof dateStr === 'string' ? dateStr.split('T')[0] : ''
+    const col = el.querySelector(`.fc-timegrid-col[data-date="${date}"]`)
+    if (col) {
+      const color = ev.backgroundColor || ev.extendedProps?.color || '#6366f1'
+      const overlay = document.createElement('div')
+      overlay.className = 'fc-day-allday-highlight'
+      overlay.style.cssText = `position:absolute;inset:0;background:${color};opacity:0.07;pointer-events:none;z-index:0;`
+      col.style.position = 'relative'
+      col.appendChild(overlay)
+    }
+  }
+}
 
 export default function CalendarView({ events, onEventClick, onEventDrop, onEventResize, onSelect }) {
   const [fullDay, setFullDay] = useState(false)
@@ -22,7 +47,10 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       const dy = e.changedTouches[0].clientY - touchStartY
       if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
         const api = calRef.current?.getApi()
-        if (api) dx > 0 ? api.prev() : api.next()
+        if (api) {
+          if (dx > 0) api.incrementDate({ days: -1 })
+          else api.incrementDate({ days: 1 })
+        }
       }
     }
     el.addEventListener('touchstart', onTouchStart, { passive: true })
@@ -32,6 +60,14 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       el.removeEventListener('touchend', onTouchEnd)
     }
   }, [])
+
+  const handleDatesSet = useCallback(() => {
+    setTimeout(() => highlightAllDayColumns(calRef, events), 50)
+  }, [events])
+
+  useEffect(() => {
+    handleDatesSet()
+  }, [events, handleDatesSet])
 
   return (
     <FullCalendar
@@ -58,6 +94,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
         right: 'dayGridMonth,timeGrid5Day,fullDayToggle',
       }}
       events={events}
+      datesSet={handleDatesSet}
       eventContent={(arg) => {
         const notes = arg.event.extendedProps?.notes
         const isTimeGrid = arg.view.type.startsWith('timeGrid')

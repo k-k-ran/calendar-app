@@ -605,6 +605,43 @@
   white-space: pre-wrap;
 }
 
+.fc-timegrid-event .fc-event-main-frame {
+  overflow: hidden;
+}
+
+.fc-timegrid-event .fc-event-notes {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Only show notes when the event is tall enough */
+.fc-timegrid-event[style*="height"] .fc-event-notes {
+  display: block;
+}
+
+.fc-timegrid-event .fc-event-main {
+  overflow: hidden;
+  max-height: 100%;
+}
+
+/* Shrink all-day section */
+.fc .fc-daygrid-body {
+  max-height: 28px;
+  overflow: hidden;
+}
+
+.fc .fc-timegrid-divider {
+  padding: 0 !important;
+}
+
+.fc-daygrid-event {
+  font-size: 10px !important;
+  padding: 0 3px !important;
+  margin: 0 !important;
+  line-height: 1.4;
+}
+
 .fc-event.status-attended {
   opacity: 0.55 !important;
 }
