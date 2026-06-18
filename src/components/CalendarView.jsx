@@ -46,8 +46,8 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       const dy = e.changedTouches[0].clientY - startY
       const dt = Date.now() - startTime
       const vx = Math.abs(dx) / dt
-      const isHorizontal = Math.abs(dx) > Math.abs(dy) * 1.2
-      if (isHorizontal && (Math.abs(dx) > 50 || vx > 0.3)) {
+      const isHorizontal = Math.abs(dx) > Math.abs(dy)
+      if (isHorizontal && (Math.abs(dx) > 30 || vx > 0.2)) {
         const api = calRef.current?.getApi()
         if (api) {
           if (dx > 0) api.incrementDate({ days: -1 })
