@@ -526,12 +526,19 @@
 /* Main calendar area */
 .main {
   flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 20px;
   background: #1e293b;
+}
+
+.fc .fc-scroller-harness .fc-scroller {
+  -webkit-overflow-scrolling: touch;
+}
+
+.fc .fc-timegrid-slot {
+  height: 48px !important;
 }
 
 /* Smooth scrolling for time grid */
