@@ -943,13 +943,13 @@
   }
 
   .fc-toolbar-title {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
 
   .fc-toolbar.fc-header-toolbar {
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 8px !important;
+    gap: 4px;
+    margin-bottom: 6px !important;
   }
 
   .fc-toolbar .fc-toolbar-chunk {
@@ -958,8 +958,17 @@
   }
 
   .fc .fc-button {
-    padding: 4px 8px !important;
-    font-size: 12px !important;
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .fc .fc-col-header-cell-cushion {
+    font-size: 11px;
+    padding: 4px 2px;
+  }
+
+  .fc .fc-timegrid-slot-label-cushion {
+    font-size: 10px;
   }
 
   .modal {
