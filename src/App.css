@@ -1021,12 +1021,12 @@
     border-top: 1px solid rgba(255,255,255,0.15);
     z-index: 50;
     padding: 0;
-    padding-bottom: 2px;
+    margin-bottom: calc(-1 * env(safe-area-inset-bottom));
   }
 
   .mobile-tab {
     flex: 1;
-    padding: 10px 8px;
+    padding: 10px 8px 6px;
     border: none;
     background: transparent;
     font: inherit;
