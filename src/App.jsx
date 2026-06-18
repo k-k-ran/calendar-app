@@ -186,11 +186,14 @@ export default function App() {
     setPeople(peData || [])
     setError(null)
 
-    for (const e of attendedEvents) {
-      const orig = (evData || []).find(o => o.id === e.id)
-      if (orig && orig.status !== e.status) {
-        await supabase.from('events').update({ status: e.status }).eq('id', e.id)
-      }
+    const statusUpdates = attendedEvents.filter((e, i) => {
+      const orig = (evData || [])[i]
+      return orig && orig.id === e.id && orig.status !== e.status
+    })
+    if (statusUpdates.length > 0) {
+      await Promise.all(statusUpdates.map(e =>
+        supabase.from('events').update({ status: e.status }).eq('id', e.id)
+      ))
     }
 
     if (!hasLoadedRef.current) {
@@ -397,12 +400,12 @@ export default function App() {
   }
 
   const handleDeleteEvent = (eventId) => {
+    setSelectedEvent(null)
     setConfirm({
       message: 'Delete this event?',
       onConfirm: async () => {
         await supabase.from('events').delete().eq('id', eventId)
         await fetchData()
-        setSelectedEvent(null)
         setConfirm(null)
       },
     })

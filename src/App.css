@@ -580,6 +580,10 @@
   color: #cbd5e1 !important;
 }
 
+.fc .fc-timegrid-slot-label {
+  vertical-align: top !important;
+}
+
 .fc .fc-timegrid-slot-label-cushion {
   color: #94a3b8 !important;
 }
