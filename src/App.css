@@ -1021,8 +1021,10 @@
     border-top: 1px solid rgba(255,255,255,0.15);
     z-index: 50;
     padding: 0;
-    padding-bottom: env(safe-area-inset-bottom);
-    margin-bottom: calc(-0.5 * env(safe-area-inset-bottom));
+    /* Small clearance above the home indicator so the labels sit near the
+       bottom edge without being hidden behind it. */
+    padding-bottom: calc(env(safe-area-inset-bottom) * 0.35);
+    margin-bottom: 0;
   }
 
   .mobile-tab {
