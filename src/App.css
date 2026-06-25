@@ -1020,10 +1020,9 @@
     background: #1e293b;
     border-top: 1px solid rgba(255,255,255,0.15);
     z-index: 50;
-    padding: 0;
-    /* Small clearance above the home indicator so the labels sit near the
-       bottom edge without being hidden behind it. */
-    padding-bottom: calc(env(safe-area-inset-bottom) * 0.35);
+    /* Small flat clearance so the labels sit near the bottom edge. The bar
+       background still fills down to the physical bottom via the parent. */
+    padding: 0 0 4px;
     margin-bottom: 0;
   }
 
