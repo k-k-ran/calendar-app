@@ -1103,6 +1103,17 @@
     font-size: 10px;
   }
 
+  /* Month view: give day cells a comfortable height instead of cramming the
+     whole month into the viewport, so busy months scroll vertically. */
+  .fc-dayGridMonth-view .fc-daygrid-day-frame {
+    min-height: 88px;
+  }
+
+  .fc-dayGridMonth-view .fc-scroller {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
   .modal {
     width: 100%;
     max-width: 100vw;
