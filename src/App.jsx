@@ -522,14 +522,6 @@ export default function App() {
 
   return (
     <div className="app">
-      <div style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 99999,
-        background: '#22c55e', color: '#000', textAlign: 'center',
-        font: '700 13px system-ui', padding: '4px',
-        paddingTop: 'calc(4px + env(safe-area-inset-top))',
-      }}>
-        ✅ BUILD CHECK — scroll-fix v3
-      </div>
       <nav className="mobile-tabs">
         <button className={`mobile-tab ${mobileTab === 'calendar' ? 'active' : ''}`} onClick={() => setMobileTab('calendar')}>Calendar</button>
         <button className={`mobile-tab ${mobileTab === 'list' ? 'active' : ''}`} onClick={() => setMobileTab('list')}>List</button>

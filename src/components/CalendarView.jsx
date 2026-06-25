@@ -50,8 +50,10 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       if (isHorizontal && (Math.abs(dx) > 30 || vx > 0.2)) {
         const api = calRef.current?.getApi()
         if (api) {
-          if (dx > 0) api.incrementDate({ days: -1 })
-          else api.incrementDate({ days: 1 })
+          // Page by the current view's interval: a month in month view,
+          // 3 days in the 3-day view.
+          if (dx > 0) api.prev()
+          else api.next()
         }
       }
     }
@@ -85,7 +87,7 @@ export default function CalendarView({ events, onEventClick, onEventDrop, onEven
       }}
       firstDay={1}
       headerToolbar={{
-        left: 'today',
+        left: 'prev,today,next',
         center: 'title',
         right: 'dayGridMonth,timeGrid3Day',
       }}
